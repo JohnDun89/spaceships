@@ -1,8 +1,7 @@
 import React from "react";
 import Particles from "react-particles-js";
-// alien = {require("./images/alien01.png")}
-
 import alien from "./images/alien01.png";
+
 class ParticleContainer extends React.Component {
   render() {
     return (
@@ -32,10 +31,17 @@ class ParticleContainer extends React.Component {
               },
 
               image: {
-                src: "https://image.ibb.co/nbBr3T/Untitled_4_01.png",
+                src: [
+                  "https://image.ibb.co/byEe8T/ships_02.png",
+                  "https://image.ibb.co/byEe8T/ships_02.png"
+                ],
                 width: 100,
                 height: 100
-              }
+              },
+              images: [
+                "https://image.ibb.co/byEe8T/ships_02.png",
+                "https://image.ibb.co/byEe8T/ships_02.png"
+              ]
             },
             opacity: {
               value: 1,
@@ -61,14 +67,14 @@ class ParticleContainer extends React.Component {
               enable: false,
               distance: 150,
               color: "#e2d018",
-              opacity: 0.4,
+              opacity: 1,
               width: 1
             },
             move: {
               enable: true,
               speed: 0.5,
               direction: "none",
-              random: false,
+              random: true,
               straight: false,
               out_mode: "out",
               bounce: true,
@@ -108,7 +114,7 @@ class ParticleContainer extends React.Component {
               },
               repulse: {
                 distance: 40,
-                duration: 0.4
+                duration: 30
               },
               push: {
                 particles_nb: 4
