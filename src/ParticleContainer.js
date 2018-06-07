@@ -4,6 +4,8 @@ import alien from "./images/alien01.png";
 
 class ParticleContainer extends React.Component {
   render() {
+    const title = this.props.image;
+
     return (
       <Particles
         width="100%"
@@ -31,10 +33,7 @@ class ParticleContainer extends React.Component {
               },
 
               image: {
-                src: [
-                  "https://image.ibb.co/byEe8T/ships_02.png",
-                  "https://image.ibb.co/byEe8T/ships_02.png"
-                ],
+                src: title,
                 width: 100,
                 height: 100
               },
