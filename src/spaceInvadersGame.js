@@ -529,27 +529,9 @@ PlayState.prototype.update = function(game, dt) {
   }
 };
 
-// var c=document.getElementById("myCanvas");
-// var ctx=c.getContext("2d");
-// var img=document.getElementById("lamp");
-// var pat=ctx.createPattern(img,"repeat");
-// ctx.rect(0,0,150,100);
-// ctx.fillStyle=pat;
-// ctx.fill();
-
-// var img = new Image();
-// img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
-// img.onload = function() {
-
-//   // create pattern
-//   var ptrn = ctx.createPattern(img, 'repeat');
-//   ctx.fillStyle = ptrn;
-//   ctx.fillRect(0, 0, 150, 150);
-
 PlayState.prototype.draw = function(game, dt, ctx) {
   //  Clear the background.
   ctx.clearRect(0, 0, game.width, game.height);
-  //rgba(0, 0, 0, 0.2)
   //  Draw ship.
   var img = new Image();
   img.src = "https://image.ibb.co/kmjPQ8/pals_01.png";
@@ -588,17 +570,17 @@ PlayState.prototype.draw = function(game, dt, ctx) {
   }
 
   //  Draw bombs.
-  ctx.fillStyle = "#ff5555";
+  ctx.fillStyle = "#04BBC7";
   for (var i = 0; i < this.bombs.length; i++) {
     var bomb = this.bombs[i];
-    ctx.fillRect(bomb.x - 2, bomb.y - 2, 4, 4);
+    ctx.fillRect(bomb.x - 2, bomb.y - 2, 8, 8);
   }
 
   //  Draw rockets.
   ctx.fillStyle = "#ff0000";
   for (var i = 0; i < this.rockets.length; i++) {
     var rocket = this.rockets[i];
-    ctx.fillRect(rocket.x, rocket.y - 2, 1, 4);
+    ctx.fillRect(rocket.x, rocket.y - 2, 2, 6);
   }
 
   //  Draw info.
