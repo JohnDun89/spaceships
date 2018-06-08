@@ -549,7 +549,7 @@ PlayState.prototype.update = function(game, dt) {
 PlayState.prototype.draw = function(game, dt, ctx) {
   //  Clear the background.
   ctx.clearRect(0, 0, game.width, game.height);
-
+  //rgba(0, 0, 0, 0.2)
   //  Draw ship.
   var img = new Image();
   img.src = "https://image.ibb.co/kmjPQ8/pals_01.png";
@@ -569,10 +569,17 @@ PlayState.prototype.draw = function(game, dt, ctx) {
   );
 
   //  Draw invaders.
-  ctx.fillStyle = "#006600";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
   for (var i = 0; i < this.invaders.length; i++) {
     var invader = this.invaders[i];
     ctx.fillRect(
+      invader.x - invader.width / 2,
+      invader.y - invader.height / 2,
+      invader.width,
+      invader.height
+    );
+    ctx.drawImage(
+      img,
       invader.x - invader.width / 2,
       invader.y - invader.height / 2,
       invader.width,
@@ -803,35 +810,6 @@ Sounds.prototype.init = function() {
   //   this.audioContext = new context();
   //   this.mute = false;
 };
-
-// Sounds.prototype.loadSound = function(name, url) {
-//   //  Reference to ourselves for closures.
-//   var self = this;
-
-//   //  Create an entry in the sounds object.
-//   this.sounds[name] = null;
-
-//   //  Create an asynchronous request for the sound.
-//   var req = new XMLHttpRequest();
-//   req.open("GET", url, true);
-//   req.responseType = "arraybuffer";
-//   req.onload = function() {
-//     self.audioContext.decodeAudioData(req.response, function(buffer) {
-//       self.sounds[name] = { buffer: buffer };
-//     });
-//   };
-//   try {
-//     req.send();
-//   } catch (e) {
-//     console.log(
-//       "An exception occured getting sound the sound " +
-//         name +
-//         " this might be " +
-//         "because the page is running from the file system, not a webserver."
-//     );
-//     console.log(e);
-//   }
-// };
 
 Sounds.prototype.playSound = function(name) {
   //  If we've not got the sound, don't bother playing it.
