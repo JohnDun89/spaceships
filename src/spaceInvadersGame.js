@@ -212,7 +212,7 @@ WelcomeState.prototype.draw = function(game, dt, ctx) {
   ctx.clearRect(0, 0, game.width, game.height);
 
   ctx.font = "30px Arial";
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "black";
   ctx.textBaseline = "center";
   ctx.textAlign = "center";
   ctx.fillText("Space Invaders", game.width / 2, game.height / 2 - 40);
@@ -240,7 +240,7 @@ GameOverState.prototype.draw = function(game, dt, ctx) {
   ctx.clearRect(0, 0, game.width, game.height);
 
   ctx.font = "30px Arial";
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "black";
   ctx.textBaseline = "center";
   ctx.textAlign = "center";
   ctx.fillText("Game Over!", game.width / 2, game.height / 2 - 40);
@@ -553,7 +553,7 @@ PlayState.prototype.draw = function(game, dt, ctx) {
   //  Draw ship.
   var img = new Image();
   img.src = "https://image.ibb.co/kmjPQ8/pals_01.png";
-  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.0)";
   ctx.fillRect(
     this.ship.x - this.ship.width / 2,
     this.ship.y - this.ship.height / 2,
@@ -569,7 +569,7 @@ PlayState.prototype.draw = function(game, dt, ctx) {
   );
 
   //  Draw invaders.
-  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.0)";
   for (var i = 0; i < this.invaders.length; i++) {
     var invader = this.invaders[i];
     ctx.fillRect(
@@ -715,7 +715,7 @@ LevelIntroState.prototype.draw = function(game, dt, ctx) {
   ctx.clearRect(0, 0, game.width, game.height);
 
   ctx.font = "36px Arial";
-  ctx.fillStyle = "#ffffff";
+  ctx.fillStyle = "#black";
   ctx.textBaseline = "middle";
   ctx.textAlign = "center";
   ctx.fillText("Level " + this.level, game.width / 2, game.height / 2);

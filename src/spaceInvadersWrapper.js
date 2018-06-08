@@ -45,7 +45,7 @@ class SpaceInavdersWrapper extends Component {
 
   render() {
     return (
-      <div>
+      <div id="space-invaders">
         <div id="gamecontainer">
           <canvas id="gameCanvas" />
         </div>

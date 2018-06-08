@@ -2,6 +2,8 @@ import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import ParticleContainer from "./ParticleContainer";
 import SpaceInvadersWrapper from "./spaceInvadersWrapper";
+import IntroductionText from "./introductionText";
+import introductionText from "./introductionText";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -15,19 +17,19 @@ class Splash extends React.Component {
   render() {
     return (
       <div>
-        {" "}
-        <div id="splash-box" onWheel={this.props.splashClicked}>
-          <div id="splash-text-container">
-            <ReactCSSTransitionGroup
-              transitionName="introduction"
-              transitionAppear={true}
-              transitionEnterTimeout={1500}
-              transitionAppearTimeout={1500}
-              transitionLeaveTimeout={1500}
-            >
+        <div onWheel={this.props.splashClicked}>
+          <ReactCSSTransitionGroup
+            transitionName="introduction"
+            transitionAppear={true}
+            transitionEnterTimeout={1500}
+            transitionAppearTimeout={1500}
+            transitionLeaveTimeout={1500}
+          >
+            <div id="splash-box">
+              {<IntroductionText />}
               {<SpaceInvadersWrapper />}
-            </ReactCSSTransitionGroup>
-          </div>
+            </div>
+          </ReactCSSTransitionGroup>
         </div>
       </div>
     );
