@@ -512,7 +512,7 @@ PlayState.prototype.update = function(game, dt) {
     ) {
       //  Dead by collision!
       game.lives = 0;
-      game.sounds.playSound("explosion");
+      //   game.sounds.playSound("explosion");
     }
   }
 
@@ -529,13 +529,39 @@ PlayState.prototype.update = function(game, dt) {
   }
 };
 
+// var c=document.getElementById("myCanvas");
+// var ctx=c.getContext("2d");
+// var img=document.getElementById("lamp");
+// var pat=ctx.createPattern(img,"repeat");
+// ctx.rect(0,0,150,100);
+// ctx.fillStyle=pat;
+// ctx.fill();
+
+// var img = new Image();
+// img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
+// img.onload = function() {
+
+//   // create pattern
+//   var ptrn = ctx.createPattern(img, 'repeat');
+//   ctx.fillStyle = ptrn;
+//   ctx.fillRect(0, 0, 150, 150);
+
 PlayState.prototype.draw = function(game, dt, ctx) {
   //  Clear the background.
   ctx.clearRect(0, 0, game.width, game.height);
 
   //  Draw ship.
-  ctx.fillStyle = "#999999";
+  var img = new Image();
+  img.src = "https://image.ibb.co/kmjPQ8/pals_01.png";
+  ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
   ctx.fillRect(
+    this.ship.x - this.ship.width / 2,
+    this.ship.y - this.ship.height / 2,
+    this.ship.width,
+    this.ship.height
+  );
+  ctx.drawImage(
+    img,
     this.ship.x - this.ship.width / 2,
     this.ship.y - this.ship.height / 2,
     this.ship.width,
