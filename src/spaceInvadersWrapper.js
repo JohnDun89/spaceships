@@ -3,18 +3,19 @@ import React, { Component } from "react";
 
 class SpaceInavdersWrapper extends Component {
   componentDidMount() {
+    var canvas = document.getElementById("gameCanvas");
     var container = document.getElementById("starfield");
     var Starfield = require("./starfield.js");
+    var Game = require("./spaceInvadersGame.js");
+
+    //  Create the starfield.
     var starfield = new Starfield();
     starfield.initialise(container);
     starfield.start();
     //  Setup the canvas.
-    var canvas = document.getElementById("gameCanvas");
-    console.log(canvas, "CANVAS");
     canvas.width = 800;
     canvas.height = 600;
     //  Create the game.
-    var Game = require("./spaceInvadersGame.js");
     var game = new Game();
     //  Initialise it with the game canvas.
     game.initialise(canvas);
@@ -22,7 +23,6 @@ class SpaceInavdersWrapper extends Component {
     game.start();
     //  Listen for keyboard events.
     window.addEventListener("keydown", function keydown(e) {
-      console.log(e);
       var keycode = e.which || window.event.keycode;
       //  Supress further processing of left/right/space (37/29/32)
       if (keycode == 37 || keycode == 39 || keycode == 32) {

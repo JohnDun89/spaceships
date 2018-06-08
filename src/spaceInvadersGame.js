@@ -1,3 +1,21 @@
+/*
+  spaceinvaders.js
+  the core logic for the space invaders game.
+*/
+
+/*  
+    Game Class
+    The Game class represents a Space Invaders game.
+    Create an instance of it, change any of the default values
+    in the settings, and call 'start' to run the game.
+    Call 'initialise' before 'start' to set the canvas the game
+    will draw to.
+    Call 'moveShip' or 'shipFire' to control the ship.
+    Listen for 'gameWon' or 'gameLost' events to handle the game
+    ending.
+*/
+
+//  Creates an instance of the Game class.
 function Game() {
   //  Set the initial config.
   this.config = {
@@ -22,9 +40,9 @@ function Game() {
 
   //  All state is in the variables below.
   this.lives = 3;
-  this.width = 800;
-  this.height = 600;
-  this.gameBounds = { left: 100, top: 100, right: 400, bottom: 400 };
+  this.width = 0;
+  this.height = 0;
+  this.gameBounds = { left: 0, top: 0, right: 0, bottom: 0 };
   this.intervalId = 0;
   this.score = 0;
   this.level = 1;
@@ -61,13 +79,13 @@ Game.prototype.initialise = function(gameCanvas) {
 Game.prototype.moveToState = function(state) {
   //  If we are in a state, leave it.
   if (this.currentState() && this.currentState().leave) {
-    this.currentState().leave(this.game);
+    this.currentState().leave(this);
     this.stateStack.pop();
   }
 
   //  If there's an enter function for the new state, call it.
   if (state.enter) {
-    state.enter(this.game);
+    state.enter(this);
   }
 
   //  Set the current state.
@@ -135,7 +153,7 @@ function GameLoop(game) {
 Game.prototype.pushState = function(state) {
   //  If there's an enter function for the new state, call it.
   if (state.enter) {
-    state.enter(this.game);
+    state.enter(this);
   }
   //  Set the current state.
   this.stateStack.push(state);
@@ -145,7 +163,7 @@ Game.prototype.popState = function() {
   //  Leave and pop the state.
   if (this.currentState()) {
     if (this.currentState().leave) {
-      this.currentState().leave(this.game);
+      this.currentState().leave(this);
     }
 
     //  Set the current state.
@@ -431,7 +449,7 @@ PlayState.prototype.update = function(game, dt) {
     }
     if (bang) {
       this.invaders.splice(i--, 1);
-      game.sounds.playSound("bang");
+      //   game.sounds.playSound("bang");
     }
   }
 
@@ -479,7 +497,7 @@ PlayState.prototype.update = function(game, dt) {
     ) {
       this.bombs.splice(i--, 1);
       game.lives--;
-      game.sounds.playSound("explosion");
+      //   game.sounds.playSound("explosion");
     }
   }
 
@@ -605,7 +623,7 @@ PlayState.prototype.fireRocket = function() {
     this.lastRocketTime = new Date().valueOf();
 
     //  Play the 'shoot' sound.
-    this.game.sounds.playSound("shoot");
+    // game.sounds.playSound("shoot");
   }
 };
 
@@ -753,12 +771,12 @@ function Sounds() {
   this.sounds = {};
 }
 
-// Sounds.prototype.init = function() {
-//   //  Create the audio context, paying attention to webkit browsers.
-//   context = window.AudioContext || window.webkitAudioContext;
-//   this.audioContext = new context();
-//   this.mute = false;
-// };
+Sounds.prototype.init = function() {
+  //  Create the audio context, paying attention to webkit browsers.
+  //   context = window.AudioContext || window.webkitAudioContext;
+  //   this.audioContext = new context();
+  //   this.mute = false;
+};
 
 // Sounds.prototype.loadSound = function(name, url) {
 //   //  Reference to ourselves for closures.
@@ -789,22 +807,22 @@ function Sounds() {
 //   }
 // };
 
-// Sounds.prototype.playSound = function(name) {
-//   //  If we've not got the sound, don't bother playing it.
-//   if (
-//     this.sounds[name] === undefined ||
-//     this.sounds[name] === null ||
-//     this.mute === true
-//   ) {
-//     return;
-//   }
+Sounds.prototype.playSound = function(name) {
+  //  If we've not got the sound, don't bother playing it.
+  if (
+    this.sounds[name] === undefined ||
+    this.sounds[name] === null ||
+    this.mute === true
+  ) {
+    return;
+  }
 
-//   //  Create a sound source, set the buffer, connect to the speakers and
-//   //  play the sound.
-//   var source = this.audioContext.createBufferSource();
-//   source.buffer = this.sounds[name].buffer;
-//   source.connect(this.audioContext.destination);
-//   source.start(0);
-// };
+  //  Create a sound source, set the buffer, connect to the speakers and
+  //  play the sound.
+  var source = this.audioContext.createBufferSource();
+  source.buffer = this.sounds[name].buffer;
+  source.connect(this.audioContext.destination);
+  source.start(0);
+};
 
 module.exports = Game;
