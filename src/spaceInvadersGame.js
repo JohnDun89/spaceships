@@ -27,8 +27,8 @@ function Game() {
     invaderDropDistance: 20,
     rocketVelocity: 120,
     rocketMaxFireRate: 2,
-    gameWidth: 400,
-    gameHeight: 300,
+    gameWidth: 500,
+    gameHeight: 500,
     fps: 50,
     debugMode: false,
     invaderRanks: 5,
@@ -315,8 +315,8 @@ PlayState.prototype.enter = function(game) {
     for (var file = 0; file < files; file++) {
       invaders.push(
         new Invader(
-          game.width / 2 + ((files / 2 - file) * 200) / files,
-          game.gameBounds.top + rank * 20,
+          game.width / 2 + ((files / 2 - file) * 300) / files,
+          game.gameBounds.top + rank * 40,
           rank,
           file,
           "Invader"
@@ -736,8 +736,10 @@ LevelIntroState.prototype.draw = function(game, dt, ctx) {
 function Ship(x, y) {
   this.x = x;
   this.y = y;
-  this.width = 20;
-  this.height = 16;
+  this.width = 40;
+  this.height = 32;
+
+  //20 - 16 original size
 }
 
 /*
@@ -771,8 +773,9 @@ function Invader(x, y, rank, file, type) {
   this.rank = rank;
   this.file = file;
   this.type = type;
-  this.width = 18;
-  this.height = 14;
+  this.width = 35;
+  this.height = 30;
+  // 18 - 14 original size
 }
 
 /*

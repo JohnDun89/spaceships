@@ -9,9 +9,9 @@ class SpaceInavdersWrapper extends Component {
     var Game = require("./spaceInvadersGame.js");
 
     //  Create the starfield.
-    var starfield = new Starfield();
-    starfield.initialise(container);
-    starfield.start();
+    // var starfield = new Starfield();
+    // starfield.initialise(container);
+    // starfield.start();
     //  Setup the canvas.
     canvas.width = 800;
     canvas.height = 600;
@@ -46,7 +46,6 @@ class SpaceInavdersWrapper extends Component {
   render() {
     return (
       <div>
-        <div id="starfield" />
         <div id="gamecontainer">
           <canvas id="gameCanvas" />
         </div>
