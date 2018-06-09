@@ -21,6 +21,7 @@ class SpaceInavdersWrapper extends Component {
     game.initialise(canvas);
     //  Start the game.
     game.start();
+    game.keyDown(32);
     //  Listen for keyboard events.
     window.addEventListener("keydown", function keydown(e) {
       var keycode = e.which || window.event.keycode;

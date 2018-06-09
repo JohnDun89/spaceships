@@ -676,7 +676,7 @@ function LevelIntroState(level) {
 LevelIntroState.prototype.update = function(game, dt) {
   //  Update the countdown.
   if (this.countdown === undefined) {
-    this.countdown = 3; // countdown from 3 secs
+    this.countdown = 0; // countdown from 3 secs
   }
   this.countdown -= dt;
 
