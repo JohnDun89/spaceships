@@ -16,22 +16,18 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div>
-        <div onWheel={this.props.splashClicked}>
-          <ReactCSSTransitionGroup
-            transitionName="introduction"
-            transitionAppear={true}
-            transitionEnterTimeout={1500}
-            transitionAppearTimeout={1500}
-            transitionLeaveTimeout={1500}
-          >
-            <div id="splash-box">
-              {<IntroductionText />}
-              {<SpaceInvadersWrapper />}
-            </div>
-          </ReactCSSTransitionGroup>
+      <ReactCSSTransitionGroup
+        transitionName="introduction"
+        transitionAppear={true}
+        transitionEnterTimeout={1500}
+        transitionAppearTimeout={1500}
+        transitionLeaveTimeout={1500}
+      >
+        <div id="splash-box">
+          {<IntroductionText />}
+          {<SpaceInvadersWrapper />}
         </div>
-      </div>
+      </ReactCSSTransitionGroup>
     );
   }
 }

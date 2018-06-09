@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-// import logo from "./logo.svg";
-import "./App.css";
-// import ParticleContainer from "./ParticleContainer";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group"; // ES6
 import Splash from "./splash.js";
 
@@ -31,12 +28,10 @@ class Opening extends Component {
           transitionAppearTimeout={1500}
           transitionLeaveTimeout={1500}
           transitionEnterTimeout={1500}
-        >
-          <div />
-        </ReactCSSTransitionGroup>
+        />
       );
     } else {
-      return <div>{splash}</div>;
+      return { splash };
     }
   }
 
@@ -45,11 +40,7 @@ class Opening extends Component {
   }
 
   render() {
-    return (
-      <div id="opening">
-        <Splash />
-      </div>
-    );
+    return <Splash />;
   }
 }
 
